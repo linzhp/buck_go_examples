@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='golang.org/x/net/internal/iana',
+  srcs=["const.go"],
+  deps=[],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

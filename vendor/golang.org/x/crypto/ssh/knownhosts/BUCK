@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='golang.org/x/crypto/ssh/knownhosts',
+  srcs=["knownhosts.go"],
+  deps=["//vendor/golang.org/x/crypto/ssh:lib"],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

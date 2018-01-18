@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='github.com/shirou/gopsutil/internal/common',
+  srcs=["binary.go", "common.go", "common_darwin.go", "common_unix.go"],
+  deps=["//vendor/golang.org/x/sys/unix:lib"],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='golang.org/x/crypto/ssh/terminal',
+  srcs=["terminal.go", "util.go", "util_bsd.go"],
+  deps=["//vendor/golang.org/x/sys/unix:lib"],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

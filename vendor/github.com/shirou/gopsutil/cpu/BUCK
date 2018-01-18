@@ -1,0 +1,21 @@
+go_library(
+  name='lib',
+  package_name='github.com/shirou/gopsutil/cpu',
+  srcs=["cpu.go", "cpu_darwin.go"],
+  deps=["//vendor/github.com/shirou/gopsutil/internal/common:lib"],
+  cgo_deps=[":cgo_lib"],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)
+
+cgo_library(
+  name='cgo_lib',
+  srcs=['cpu_darwin_cgo.go']
+)
+
+go_test(
+	name='all_tests',
+	srcs=["cpu_test.go"],
+	deps=["//vendor/github.com/shirou/gopsutil/internal/common:lib"],
+	library=':lib'
+)

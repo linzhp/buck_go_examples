@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='golang.org/x/net/bpf',
+  srcs=["asm.go", "constants.go", "doc.go", "instructions.go", "setter.go", "vm.go", "vm_instructions.go"],
+  deps=[],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

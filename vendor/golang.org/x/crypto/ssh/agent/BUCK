@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='golang.org/x/crypto/ssh/agent',
+  srcs=["client.go", "forward.go", "keyring.go", "server.go"],
+  deps=["//vendor/golang.org/x/crypto/ed25519:lib", "//vendor/golang.org/x/crypto/ssh:lib"],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

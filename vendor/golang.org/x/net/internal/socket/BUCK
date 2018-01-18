@@ -1,0 +1,8 @@
+go_library(
+  name='lib',
+  package_name='golang.org/x/net/internal/socket',
+  srcs=["cmsghdr.go", "cmsghdr_bsd.go", "error_unix.go", "iovec_64bit.go", "mmsghdr_stub.go", "msghdr_bsd.go", "msghdr_bsdvar.go", "rawconn.go", "rawconn_msg.go", "rawconn_nommsg.go", "socket.go", "sys.go", "sys_bsd.go", "sys_darwin.go", "sys_posix.go", "sys_unix.go", "zsys_darwin_amd64.go"],
+  deps=[],
+  visibility=['PUBLIC'],
+  tests=[':all_tests']
+)

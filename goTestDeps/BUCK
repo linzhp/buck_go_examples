@@ -2,14 +2,14 @@ go_library(
   name='lib',
   srcs=glob(['*.go'], excludes=['*_test.go']),
   visibility=['PUBLIC'],
-  tests=[':unmarshall_test'],
+  tests=[':all_tests'],
   deps=[
     '//vendor/gopkg.in/yaml.v2:lib'
   ]
 )
 
 go_test(
-  name='unmarshall_test',
+  name='all_tests',
   library=':lib',
   srcs=['unmarshall_test.go'],
   deps=[
