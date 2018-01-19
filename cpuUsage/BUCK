@@ -1,0 +1,5 @@
+go_binary(
+  name='bin',
+  srcs=['main.go'],
+  deps=["//vendor/github.com/shirou/gopsutil/cpu:lib"]
+)
