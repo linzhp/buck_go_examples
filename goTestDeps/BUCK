@@ -2,7 +2,7 @@ go_library(
   name='lib',
   srcs=glob(['*.go'], excludes=['*_test.go']),
   visibility=['PUBLIC'],
-  tests=[':all_tests'],
+  tests=[':all_tests', ':copied_test'],
   deps=[
     '//vendor/gopkg.in/yaml.v2:lib'
   ]
@@ -12,6 +12,22 @@ go_test(
   name='all_tests',
   library=':lib',
   srcs=['unmarshall_test.go'],
+  deps=[
+    '//vendor/gopkg.in/yaml.v2:lib'
+  ]
+)
+
+genrule(
+  name='copy_test',
+  srcs=['unmarshall_test.go'],
+  out='copied_unmarshall_test.go',
+  bash='cp $SRCS $OUT'
+)
+
+go_test(
+  name='copied_test',
+  library=':lib',
+  srcs=[':copy_test'],
   deps=[
     '//vendor/gopkg.in/yaml.v2:lib'
   ]
