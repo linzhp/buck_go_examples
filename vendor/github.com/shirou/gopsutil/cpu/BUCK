@@ -16,6 +16,5 @@ cgo_library(
 go_test(
 	name='all_tests',
 	srcs=["cpu_test.go"],
-	deps=["//vendor/github.com/shirou/gopsutil/internal/common:lib"],
 	library=':lib'
 )
