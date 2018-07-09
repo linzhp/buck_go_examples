@@ -3,7 +3,7 @@ go_library(
   package_name='github.com/shirou/gopsutil/cpu',
   srcs=["cpu.go", "cpu_darwin.go"],
   deps=["//vendor/github.com/shirou/gopsutil/internal/common:lib"],
-  cgo_deps=[":cgo_lib"],
+  cgo=":cgo_lib",
   visibility=['PUBLIC'],
   tests=[':all_tests']
 )
