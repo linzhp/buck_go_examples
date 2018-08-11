@@ -1,3 +1,4 @@
 .buckd
 buck-out
 .DS_Store
+.idea

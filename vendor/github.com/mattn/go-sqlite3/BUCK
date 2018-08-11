@@ -1,0 +1,54 @@
+go_library(
+    name='lib',
+    package_name="github.com/mattn/go-sqlite3",
+    srcs=['doc.go', 'sqlite3_func_crypt.go', 'sqlite3_go18.go'],
+    cgo=':cgo_lib',
+    visibility=['PUBLIC']
+)
+
+cgo_library(
+    name='cgo_lib',
+    package_name = "sqlite3",
+    srcs=[
+        "backup.go",
+        "callback.go",
+        "error.go",
+        "sqlite3.go",
+        "sqlite3_context.go",
+        "sqlite3_load_extension.go",
+        "sqlite3_opt_userauth_omit.go",
+        "sqlite3_other.go",
+        "sqlite3_type.go",
+    ],
+    headers = [
+        "sqlite3-binding.h",
+        "sqlite3ext.h",
+    ],
+    compiler_flags = [
+        "-std=gnu99",
+        "-DSQLITE_ENABLE_RTREE",
+        "-DSQLITE_THREADSAFE=1",
+        "-DHAVE_USLEEP=1",
+        "-DSQLITE_ENABLE_FTS3",
+        "-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+        "-DSQLITE_ENABLE_FTS4_UNICODE61",
+        "-DSQLITE_TRACE_SIZE_LIMIT=15",
+        "-DSQLITE_OMIT_DEPRECATED",
+        "-DSQLITE_DISABLE_INTRINSIC",
+        "-DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1",
+        "-DSQLITE_ENABLE_UPDATE_DELETE_LIMIT",
+        "-Wno-deprecated-declarations",
+    ],
+    deps=[":cxx_lib"],
+)
+
+cxx_library(
+      name="cxx_lib",
+      srcs=["sqlite3-binding.c"],
+      exported_headers=[
+        "sqlite3-binding.h",
+        "sqlite3ext.h",
+    ],
+      header_namespace = "",
+      exported_linker_flags=['-lpthread'],
+)

@@ -1,0 +1,5 @@
+go_binary(
+    name="version",
+    srcs=["main.go"],
+    deps=["//vendor/github.com/mattn/go-sqlite3:lib"]
+)
