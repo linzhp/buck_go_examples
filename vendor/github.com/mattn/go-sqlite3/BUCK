@@ -1,14 +1,7 @@
-go_library(
-    name='lib',
-    package_name="github.com/mattn/go-sqlite3",
-    srcs=['doc.go', 'sqlite3_func_crypt.go', 'sqlite3_go18.go'],
-    cgo=':cgo_lib',
-    visibility=['PUBLIC']
-)
-
 cgo_library(
-    name='cgo_lib',
-    package_name = "sqlite3",
+    name='lib',
+    package_name = "github.com/mattn/go-sqlite3",
+    go_srcs=['doc.go', 'sqlite3_func_crypt.go', 'sqlite3_go18.go'],
     srcs=[
         "backup.go",
         "callback.go",
@@ -40,6 +33,7 @@ cgo_library(
         "-Wno-deprecated-declarations",
     ],
     deps=[":cxx_lib"],
+    visibility=['PUBLIC']
 )
 
 cxx_library(
