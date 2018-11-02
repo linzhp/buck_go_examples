@@ -1,0 +1,5 @@
+genrule(
+  name='gen',
+  out='uber.txt',
+  cmd='echo "We do the right thing." > $OUT',
+)
