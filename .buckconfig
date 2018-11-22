@@ -1,3 +1,6 @@
 [parser]
   polyglot_parsing_enabled = true
   default_build_file_syntax = SKYLARK
+
+[cache]
+  dir = /tmp/buck-cache
