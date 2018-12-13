@@ -1,8 +1,8 @@
 cgo_library(
-    name='lib',
+    name = "lib",
     package_name = "github.com/mattn/go-sqlite3",
-    go_srcs=['doc.go', 'sqlite3_func_crypt.go', 'sqlite3_go18.go'],
-    srcs=[
+    go_srcs = ["doc.go", "sqlite3_func_crypt.go", "sqlite3_go18.go"],
+    srcs = [
         "backup.go",
         "callback.go",
         "error.go",
@@ -32,17 +32,17 @@ cgo_library(
         "-DSQLITE_ENABLE_UPDATE_DELETE_LIMIT",
         "-Wno-deprecated-declarations",
     ],
-    deps=[":cxx_lib"],
-    visibility=['PUBLIC']
+    deps = [":cxx_lib"],
+    visibility = ["PUBLIC"],
 )
 
 cxx_library(
-      name="cxx_lib",
-      srcs=["sqlite3-binding.c"],
-      exported_headers=[
+    name = "cxx_lib",
+    srcs = ["sqlite3-binding.c"],
+    exported_headers = [
         "sqlite3-binding.h",
         "sqlite3ext.h",
     ],
-      header_namespace = "",
-      exported_linker_flags=['-lpthread'],
+    header_namespace = "",
+    exported_linker_flags = ["-lpthread"],
 )

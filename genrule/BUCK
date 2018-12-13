@@ -3,3 +3,16 @@ genrule(
   out='uber.txt',
   cmd='echo "We do the right thing." > $OUT',
 )
+
+genrule(
+  name='data',
+  srcs=['data.txt'],
+  out='.',
+  cmd='cp $SRCS $OUT',
+)
+
+go_binary(
+  name='bin',
+  srcs=['main.go'],
+  resources=[':data'],
+)
